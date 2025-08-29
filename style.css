@@ -291,7 +291,15 @@ a { color: inherit; text-decoration: none; }
   margin-top: 9px;
   flex: 0 0 6px;
 }
-.feature-points .hl { color: var(--gold-600); font-weight: 700; }
+.feature-points .hl { 
+  color: var(--gold-600); 
+  font-weight: 700; 
+  white-space: nowrap; /* keep key phrase together */
+  display: inline-block;
+  margin-right: 3px; 
+  margin-left: -2px; /* consistent gap before following text */
+}
+.feature-points li { word-break: normal; }
 .feature-cta {
   background: var(--gold);
   color: #fff;
