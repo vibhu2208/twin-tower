@@ -109,96 +109,230 @@
     </div>
   </section>
 
-  <!-- Amenities -->
-  <section id="amenities" class="section">
+  <!-- Amenities Carousel -->
+  <section id="amenities" class="section amenities-carousel">
     <div class="container">
-      <h2 class="section-title">Amenities</h2>
-      <div class="cards-grid">
-        <figure class="card"><img src="images/Co-working-Space.webp" alt="Co-working Space"><figcaption>Co-working Space</figcaption></figure>
-        <figure class="card"><img src="images/Conference--Room.webp" alt="Conference Room"><figcaption>Conference Room</figcaption></figure>
-        <figure class="card"><img src="images/Gymnasium.webp" alt="Gymnasium"><figcaption>Gymnasium</figcaption></figure>
-        <figure class="card"><img src="images/Mini-Theater.webp" alt="Mini Theater"><figcaption>Mini Theater</figcaption></figure>
-        <figure class="card"><img src="images/Yoga-Deck.webp" alt="Yoga Deck"><figcaption>Yoga Deck</figcaption></figure>
-        <figure class="card"><img src="images/multi-purpose-hall.webp" alt="Multi-purpose Hall"><figcaption>Multi-purpose Hall</figcaption></figure>
-        <figure class="card"><img src="images/spa-and-salon.webp" alt="Spa and Salon"><figcaption>Spa & Salon</figcaption></figure>
-        <figure class="card"><img src="images/swimming-pool.webp" alt="Swimming Pool"><figcaption>Swimming Pool</figcaption></figure>
-        <figure class="card"><img src="images/e-library.jpg" alt="E-Library"><figcaption>E-Library</figcaption></figure>
-        <figure class="card"><img src="images/indoor-sports-facility.jpg" alt="Indoor Sports"><figcaption>Indoor Sports</figcaption></figure>
-        <figure class="card"><img src="images/kids-outdoor-play-area.jpg" alt="Kids Outdoor Play Area"><figcaption>Kids Outdoor Play Area</figcaption></figure>
-        <figure class="card"><img src="images/miyawaki-forest.jpg" alt="Miyawaki Forest"><figcaption>Miyawaki Forest</figcaption></figure>
-        <figure class="card"><img src="images/flowering-and-sensory-garden.jpg" alt="Flowering & Sensory Garden"><figcaption>Flowering & Sensory Garden</figcaption></figure>
+      <div class="amenities-header">
+        <h2 class="amenities-title">AMENITIES</h2>
+        <p class="amenities-subtitle">Indulge in a world of exclusive amenities crafted for comfort, wellness, and leisure.</p>
       </div>
+    </div>
+    
+    <div class="amenities-slider" data-autoplay="true" data-interval="5000">
+      <button class="amenities-arrow prev" aria-label="Previous amenity">&#10094;</button>
+      
+      <div class="amenities-viewport">
+        <div class="amenities-track">
+          <div class="amenity-slide is-active">
+            <img src="images/Co-working-Space.webp" alt="Co-working Space" />
+            
+          </div>
+          <div class="amenity-slide">
+            <img src="images/Conference--Room.webp" alt="Conference Room" />
+            <div class="amenity-label">Conference Room</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/Gymnasium.webp" alt="Gymnasium" />
+            <div class="amenity-label">Gymnasium</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/Mini-Theater.webp" alt="Mini Theater" />
+            <div class="amenity-label">Mini Theater</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/Yoga-Deck.webp" alt="Yoga Deck" />
+            <div class="amenity-label">Yoga Deck</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/multi-purpose-hall.webp" alt="Multi-purpose Hall" />
+            <div class="amenity-label">Multi-Purpose Hall</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/spa-and-salon.webp" alt="Spa and Salon" />
+            <div class="amenity-label">Spa & Salon</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/swimming-pool.webp" alt="Swimming Pool" />
+            <div class="amenity-label">Swimming Pool</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/e-library.jpg" alt="E-Library" />
+            <div class="amenity-label">E-Library</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/indoor-sports-facility.jpg" alt="Indoor Sports" />
+            <div class="amenity-label">Indoor Sports</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/kids-outdoor-play-area.jpg" alt="Kids Outdoor Play Area" />
+            <div class="amenity-label">Kids Outdoor Play Area</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/miyawaki-forest.jpg" alt="Miyawaki Forest" />
+            <div class="amenity-label">Miyawaki Forest</div>
+          </div>
+          <div class="amenity-slide">
+            <img src="images/flowering-and-sensory-garden.jpg" alt="Flowering & Sensory Garden" />
+            <div class="amenity-label">Flowering & Sensory Garden</div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="amenities-arrow next" aria-label="Next amenity">&#10095;</button>
+      
+      <div class="amenities-dots" aria-label="Amenity indicators"></div>
+      <div class="amenities-mobile-controls">
+        <button class="amenities-arrow prev mobile" aria-label="Previous amenity">&#10094;</button>
+        <button class="amenities-arrow next mobile" aria-label="Next amenity">&#10095;</button>
+      </div>
+      <button class="amenities-cta btn">View All Amenities</button>
     </div>
   </section>
 
-  <!-- Gallery -->
-  <section id="gallery" class="section">
+  <!-- Gallery (Carousel) -->
+  <section id="gallery" class="section gallery-carousel">
     <div class="container">
       <h2 class="section-title">Gallery</h2>
-      <div class="gallery-grid">
-        <img src="images/gallery-01.webp" alt="Gallery 1" />
-        <img src="images/gallery-02.webp" alt="Gallery 2" />
-        <img src="images/gallery-03.webp" alt="Gallery 3" />
-        <img src="images/gallery-04.webp" alt="Gallery 4" />
-        <img src="images/gallery-05.webp" alt="Gallery 5" />
-        <img src="images/gallery-06.webp" alt="Gallery 6" />
+    </div>
+    <div class="carousel" data-autoplay="true" data-interval="4500">
+      <button class="carousel-arrow prev" aria-label="Previous slide">&#10094;</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          <div class="slide is-active"><img src="images/gallery-01.webp" alt="Gallery 1" /></div>
+          <div class="slide"><img src="images/gallery-02.webp" alt="Gallery 2" /></div>
+          <div class="slide"><img src="images/gallery-03.webp" alt="Gallery 3" /></div>
+          <div class="slide"><img src="images/gallery-04.webp" alt="Gallery 4" /></div>
+          <div class="slide"><img src="images/gallery-05.webp" alt="Gallery 5" /></div>
+          <div class="slide"><img src="images/gallery-06.webp" alt="Gallery 6" /></div>
+        </div>
+      </div>
+      <button class="carousel-arrow next" aria-label="Next slide">&#10095;</button>
+      <div class="carousel-dots" aria-label="Slide indicators"></div>
+      <div class="carousel-thumbs" aria-label="Thumbnails">
+        <button class="thumb is-active"><img src="images/gallery-01.webp" alt="Thumb 1" /></button>
+        <button class="thumb"><img src="images/gallery-02.webp" alt="Thumb 2" /></button>
+        <button class="thumb"><img src="images/gallery-03.webp" alt="Thumb 3" /></button>
+        <button class="thumb"><img src="images/gallery-04.webp" alt="Thumb 4" /></button>
+        <button class="thumb"><img src="images/gallery-05.webp" alt="Thumb 5" /></button>
+        <button class="thumb"><img src="images/gallery-06.webp" alt="Thumb 6" /></button>
       </div>
     </div>
   </section>
 
-  <!-- Floor Plans (two blurred cards with Click to View) -->
+  <!-- Floor Plans (three blurred cards with Click to View) -->
   <section id="floor-plans" class="section">
     <div class="container">
       <h2 class="section-title">Floor Plans</h2>
-      <div class="locked-grid">
-        <div class="locked-card">
-          <div class="locked-img">
-            <img src="images/about-building.png" alt="Floor Plan A (blurred)" />
+      <div class="floor-plans-grid">
+        <div class="floor-plan-card">
+          <div class="floor-plan-img">
+            <img src="images/3bhk.webp" alt="3 BHK Floor Plan (blurred)" />
+            <button class="btn btn-outline unlock-btn" data-target="3bhk">Click to View</button>
           </div>
-          <button class="btn btn-outline unlock-btn" data-target="floor-a">Click to View</button>
+          <h3 class="floor-plan-title">3 BHK</h3>
         </div>
-        <div class="locked-card">
-          <div class="locked-img">
-            <img src="images/about-building.png" alt="Floor Plan B (blurred)" />
+        <div class="floor-plan-card">
+          <div class="floor-plan-img">
+            <img src="images/3-5bhk.webp" alt="3.5 BHK Floor Plan (blurred)" />
+            <button class="btn btn-outline unlock-btn" data-target="3-5bhk">Click to View</button>
           </div>
-          <button class="btn btn-outline unlock-btn" data-target="floor-b">Click to View</button>
+          <h3 class="floor-plan-title">3.5 BHK</h3>
+        </div>
+        <div class="floor-plan-card">
+          <div class="floor-plan-img">
+            <img src="images/4-5bhk.webp" alt="4.5 BHK Floor Plan (blurred)" />
+            <button class="btn btn-outline unlock-btn" data-target="4-5bhk">Click to View</button>
+          </div>
+          <h3 class="floor-plan-title">4.5 BHK</h3>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Site Plans (same configuration as Floor Plans) -->
+  <!-- Site Plans (single master plan) -->
   <section id="site-plans" class="section">
     <div class="container">
       <h2 class="section-title">Site Plans</h2>
-      <div class="locked-grid">
-        <div class="locked-card">
-          <div class="locked-img">
-            <img src="images/about-building.png" alt="Site Plan A (blurred)" />
+      <div class="site-plan-container">
+        <div class="site-plan-card">
+          <div class="site-plan-img">
+            <img src="images/master-plan.webp" alt="Master Site Plan (blurred)" />
+            <button class="btn btn-outline unlock-btn" data-target="master-plan">Click to View</button>
           </div>
-          <button class="btn btn-outline unlock-btn" data-target="site-a">Click to View</button>
-        </div>
-        <div class="locked-card">
-          <div class="locked-img">
-            <img src="images/about-building.png" alt="Site Plan B (blurred)" />
-          </div>
-          <button class="btn btn-outline unlock-btn" data-target="site-b">Click to View</button>
+          <h3 class="site-plan-title">Master Plan</h3>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Location Connectivity -->
-  <section id="location" class="section">
-    <div class="container">
-      <h2 class="section-title">Location Connectivity</h2>
-      <div class="location-wrap">
-        <div class="location-map-placeholder" aria-label="Map placeholder">
-          Map / Connectivity Highlights
+  <section id="location" class="location-section">
+    <!-- Hero Area -->
+    <div class="location-hero">
+      <div class="container location-hero-content">
+        <div class="location-hero-left">
+          <h2 class="location-title">LOCATION CONNECTIVITY</h2>
+          
         </div>
-        <div class="location-cta">
-          <p>Discover unmatched connectivity and convenience.</p>
-          <a href="#contact" class="btn">Enquire Now</a>
+        <div class="location-hero-right">
+          <button class="location-cta enquire-open">Enquire Now →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Bubbles Area -->
+    <div class="location-bubbles-section">
+      <div class="container">
+        <div class="bubbles-container">
+          <div class="bubble-item" data-time="0">
+            <div class="bubble">
+              <span class="bubble-time">0 min</span>
+            </div>
+            <div class="bubble-content">
+              <h3 class="content-title">Dwarka Expressway</h3>
+              <p class="content-description">Providing strategic connectivity to New Delhi & Gurugram</p>
+            </div>
+          </div>
+          
+          <div class="bubble-item" data-time="5">
+            <div class="bubble">
+              <span class="bubble-time">5 min</span>
+            </div>
+            <div class="bubble-content">
+              <h3 class="content-title">Everything You Need</h3>
+              <p class="content-description">Top schools, hospitals, shopping malls, high street arcades and IT hubs</p>
+            </div>
+          </div>
+          
+          <div class="bubble-item" data-time="10">
+            <div class="bubble">
+              <span class="bubble-time">10 min</span>
+            </div>
+            <div class="bubble-content">
+              <h3 class="content-title">Cloverleaf & SPR</h3>
+              <p class="content-description">Convenient access to key hubs in Gurugram</p>
+            </div>
+          </div>
+          
+          <div class="bubble-item" data-time="15">
+            <div class="bubble">
+              <span class="bubble-time">15 min</span>
+            </div>
+            <div class="bubble-content">
+              <h3 class="content-title">Corporate Hubs</h3>
+              <p class="content-description">Easy access to Udyog Vihar, proposed Rapid Metro, and RRTS</p>
+            </div>
+          </div>
+          
+          <div class="bubble-item" data-time="20">
+            <div class="bubble">
+              <span class="bubble-time">20 min</span>
+            </div>
+            <div class="bubble-content">
+              <h3 class="content-title">Airport</h3>
+              <p class="content-description">Excellent connectivity to NH-8 and the airport via Dwarka Expressway</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -251,5 +385,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="location-bubbles.js"></script>
 </body>
 </html>

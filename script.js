@@ -95,6 +95,11 @@ enquiryForm?.addEventListener('submit', (e) => {
   // TODO: integrate backend or WhatsApp/SMS/email as needed
   console.log('Enquiry submitted:', { name, phone });
 
+  // Unlock all floor plans and site plans after successful submission
+  document.querySelectorAll('.floor-plan-card, .site-plan-card').forEach(card => {
+    card.classList.add('unlocked');
+  });
+
   // Reset and close
   enquiryForm.reset();
   closeModal();
@@ -103,3 +108,141 @@ enquiryForm?.addEventListener('submit', (e) => {
 // Footer year
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
+
+// Gallery Carousel (vanilla JS)
+(function initCarousel(){
+  const root = document.querySelector('.carousel');
+  if (!root) return;
+
+  const track = root.querySelector('.carousel-track');
+  const slides = Array.from(track.querySelectorAll('.slide'));
+  const prev = root.querySelector('.carousel-arrow.prev');
+  const next = root.querySelector('.carousel-arrow.next');
+  const dotsWrap = root.querySelector('.carousel-dots');
+  const thumbs = Array.from(root.querySelectorAll('.carousel-thumbs .thumb'));
+  const autoplay = root.getAttribute('data-autoplay') === 'true';
+  const intervalMs = Number(root.getAttribute('data-interval')) || 4500;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Go to slide ${i+1}`);
+    if (i === 0) b.classList.add('is-active');
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  let index = 0;
+  let timer = null;
+
+  function setActive(i){
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => s.classList.toggle('is-active', j === index));
+    dots.forEach((d, j) => d.classList.toggle('is-active', j === index));
+    thumbs.forEach((t, j) => t.classList.toggle('is-active', j === index));
+  }
+
+  function nextSlide(){ setActive(index + 1); }
+  function prevSlide(){ setActive(index - 1); }
+
+  next?.addEventListener('click', nextSlide);
+  prev?.addEventListener('click', prevSlide);
+  dots.forEach((d, i) => d.addEventListener('click', () => setActive(i)));
+  thumbs.forEach((t, i) => t.addEventListener('click', () => setActive(i)));
+
+  // Autoplay with pause on hover
+  function start(){ if (!autoplay) return; stop(); timer = setInterval(nextSlide, intervalMs); }
+  function stop(){ if (timer) clearInterval(timer); timer = null; }
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  start();
+
+  // Swipe support
+  let startX = 0, dx = 0, isDown = false;
+  const vp = root.querySelector('.carousel-viewport');
+  vp.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDown = true; stop(); }, {passive: true});
+  vp.addEventListener('touchmove', (e) => { if (!isDown) return; dx = e.touches[0].clientX - startX; }, {passive: true});
+  vp.addEventListener('touchend', () => {
+    if (Math.abs(dx) > 40) { dx < 0 ? nextSlide() : prevSlide(); }
+    isDown = false; dx = 0; start();
+  });
+})();
+
+// Amenities Carousel
+(function initAmenitiesCarousel(){
+  const root = document.querySelector('.amenities-slider');
+  if (!root) return;
+
+  const track = root.querySelector('.amenities-track');
+  const slides = Array.from(track.querySelectorAll('.amenity-slide'));
+  const prev = root.querySelector('.amenities-arrow.prev');
+  const next = root.querySelector('.amenities-arrow.next');
+  const dotsWrap = root.querySelector('.amenities-dots');
+  const autoplay = root.getAttribute('data-autoplay') === 'true';
+  const intervalMs = Number(root.getAttribute('data-interval')) || 5000;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Go to amenity ${i+1}`);
+    if (i === 0) b.classList.add('is-active');
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  let index = 0;
+  let timer = null;
+
+  function setActive(i){
+    index = (i + slides.length) % slides.length;
+    
+    // Remove all classes
+    slides.forEach(s => s.classList.remove('is-active', 'is-prev', 'is-next'));
+    dots.forEach(d => d.classList.remove('is-active'));
+    
+    // Set active
+    slides[index].classList.add('is-active');
+    dots[index].classList.add('is-active');
+    
+    // Set prev/next for partial visibility with blur
+    const prevIndex = (index - 1 + slides.length) % slides.length;
+    const nextIndex = (index + 1) % slides.length;
+    slides[prevIndex].classList.add('is-prev');
+    slides[nextIndex].classList.add('is-next');
+    
+    // No transform needed - using flexbox order instead
+  }
+
+  function nextSlide(){ setActive(index + 1); }
+  function prevSlide(){ setActive(index - 1); }
+
+  next?.addEventListener('click', nextSlide);
+  prev?.addEventListener('click', prevSlide);
+  dots.forEach((d, i) => d.addEventListener('click', () => setActive(i)));
+
+  // Mobile arrows
+  const mobileNext = root.querySelector('.amenities-arrow.next.mobile');
+  const mobilePrev = root.querySelector('.amenities-arrow.prev.mobile');
+  mobileNext?.addEventListener('click', nextSlide);
+  mobilePrev?.addEventListener('click', prevSlide);
+
+  // Autoplay with pause on hover
+  function start(){ if (!autoplay) return; stop(); timer = setInterval(nextSlide, intervalMs); }
+  function stop(){ if (timer) clearInterval(timer); timer = null; }
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  
+  // Initialize
+  setActive(0);
+  start();
+
+  // Swipe support
+  let startX = 0, dx = 0, isDown = false;
+  const vp = root.querySelector('.amenities-viewport');
+  vp.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDown = true; stop(); }, {passive: true});
+  vp.addEventListener('touchmove', (e) => { if (!isDown) return; dx = e.touches[0].clientX - startX; }, {passive: true});
+  vp.addEventListener('touchend', () => {
+    if (Math.abs(dx) > 40) { dx < 0 ? nextSlide() : prevSlide(); }
+    isDown = false; dx = 0; start();
+  });
+})();
