@@ -13,13 +13,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Top Bar -->
-  <div class="topbar">
-    <div class="container">
-      <a class="topbar-phone" href="tel:+919811750130">+91 98117 50130</a>
-    </div>
-  </div>
-
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
@@ -27,7 +20,10 @@
         <img src="images/twin-tower-dxp-logo.webp" alt="Twin Tower" class="logo" />
       </a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="header-right">
+        <a class="header-phone" href="tel:+919811750130">+91 98117 50130</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      </div>
 
       <nav class="site-nav" aria-label="Primary">
         <a href="#quick">Quick View</a>
@@ -44,35 +40,72 @@
   <!-- Hero (banner only) -->
   <section class="hero" role="img" aria-label="Project hero banner"></section>
 
-  <!-- Quick View Details (no About section) -->
-  <section id="quick" class="section">
+  <!-- Quick View Details -->
+  <section id="quick" class="section quick-view-luxury">
     <div class="container">
-      <h2 class="section-title">Quick View Details</h2>
-      <ul class="quick-grid">
-        <li>
-          <h3>Ultra Luxurious Residences</h3>
-        </li>
-        <li>
-          <h3>45 Storeys High Rise Structure</h3>
-        </li>
-        <li>
-          <h3>Triple Height Entrance Lobby</h3>
-        </li>
-        <li>
-          <h3>70 x 6 Feet</h3>
-          <p>(Approx 21.3* X 1.8* Meter)</p>
-        </li>
-        <li>
-          <h3>Expansive Balconies</h3>
-        </li>
-        <li>
-          <h3>4 Swimming Pools</h3>
-        </li>
-        <li>
-          <h3>12 Feet Floor-to-floor Height</h3>
-          <p>(Approx 3.65* Meter)</p>
-        </li>
-      </ul>
+      <!-- Top Area: Building Image + Main Heading -->
+      <div class="quick-header">
+        <div class="quick-header-left">
+          <div class="building-thumbnail">
+            <img src="images/40-story-icon.png" alt="Twin Tower Building" />
+          </div>
+          <div class="quick-title-area">
+            <h2 class="quick-main-title">Ultra Luxurious Residences</h2>
+            <p class="quick-subtitle">45 Storeys High Rise Structure</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider Line with Arrow Icon -->
+      <div class="quick-divider">
+        <div class="divider-line"></div>
+        <div class="scroll-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 10l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Quick Facts Row -->
+      <div class="quick-facts">
+        <div class="fact-item">
+          <div class="fact-highlight">TRIPLE HEIGHT</div>
+          <div class="fact-description">Entrance Lobby</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-highlight">70 X 6 FEET</div>
+          <div class="fact-description">(Approx. 21.3m x 1.8m)<br>Expansive Balconies</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-highlight">4</div>
+          <div class="fact-description">Swimming Pools</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-highlight">12 FEET</div>
+          <div class="fact-description">(Approx. 3.65m)<br>Floor-to-floor Height</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Spotlight (light background) -->
+  <section id="feature-spotlight" class="section feature-spotlight">
+    <div class="container feature-wrap">
+      <div class="feature-image">
+        <img src="images/about-building.png" alt="Twin Tower Building" />
+      </div>
+      <div class="feature-content">
+        <ul class="feature-points">
+          <li><span class="hl">Dedicated elevators</span> for all apartments</li>
+          <li>Designed by internationally renowned Singapore based architect <span class="hl">BENOY</span></li>
+          <li><span class="hl">The Gem Clubhouse</span> for all things leisure &amp; exclusive experiences</li>
+          <li><span class="hl">Amenities</span> at Ground, 1st podium &amp; 2nd podium levels in a cascade</li>
+          <li><span class="hl">Panoramic view</span> of the millennium city</li>
+          <li><span class="hl">Biophilic architectural design</span> to create an environment of lush greenery</li>
+        </ul>
+        <button type="button" class="btn feature-cta enquire-open">Enquire Now →</button>
+      </div>
     </div>
   </section>
 

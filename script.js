@@ -1,10 +1,32 @@
 // Mobile menu
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
+const header = document.querySelector('.site-header');
+
+function closeNav() {
+  if (nav) {
+    nav.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+  }
+}
+
 if (toggle && nav) {
-  toggle.addEventListener('click', () => {
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!header?.contains(e.target)) {
+      closeNav();
+    }
+  });
+
+  // Prevent menu from closing when clicking inside nav
+  nav.addEventListener('click', (e) => {
+    e.stopPropagation();
   });
 }
 
@@ -44,6 +66,11 @@ document.querySelectorAll('.unlock-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     openModal();
   });
+});
+
+// Also open modal from Feature Spotlight CTA
+document.querySelectorAll('.enquire-open').forEach(btn => {
+  btn.addEventListener('click', () => openModal());
 });
 
 // Close on backdrop or X
