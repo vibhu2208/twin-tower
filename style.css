@@ -796,6 +796,112 @@ a { color: inherit; text-decoration: none; }
 .bubble-item[data-time="15"] .bubble { width: 90px; height: 90px; }
 .bubble-item[data-time="20"] .bubble { width: 100px; height: 100px; }
 
+/* Mobile Responsive Bubbles */
+@media (max-width: 768px) {
+  .location-section {
+    padding-bottom: 100px;
+  }
+  
+  .location-bubbles-section {
+    min-height: 120px;
+  }
+  
+  .bubbles-container {
+    position: static !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: visible;
+    padding: 20px 10px !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .bubble-item {
+    flex: 1 !important;
+    flex-shrink: 1 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-width: 50px;
+    max-width: 70px;
+  }
+  
+  /* Smaller uniform bubble sizes on mobile */
+  .bubble-item[data-time="0"] .bubble,
+  .bubble-item[data-time="5"] .bubble,
+  .bubble-item[data-time="10"] .bubble,
+  .bubble-item[data-time="15"] .bubble,
+  .bubble-item[data-time="20"] .bubble {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .bubble-time {
+    font-size: 10px;
+  }
+  
+  /* Mobile content positioning */
+  .bubble-content {
+    position: absolute !important;
+    bottom: 60px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 260px !important;
+    max-width: 85vw !important;
+    z-index: 1000 !important;
+    display: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: rgba(255,255,255,0.95) !important;
+    color: #333 !important;
+    padding: 16px 20px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Adjust positioning for edge bubbles */
+  .bubble-item[data-time="0"] .bubble-content {
+    left: 10px !important;
+    transform: translateX(0) !important;
+  }
+  
+  .bubble-item[data-time="20"] .bubble-content {
+    right: 10px !important;
+    left: auto !important;
+    transform: translateX(0) !important;
+  }
+  
+  /* Adjust arrow for edge bubbles */
+  .bubble-item[data-time="0"] .bubble-content::after {
+    left: 30px !important;
+    transform: translateX(0) !important;
+  }
+  
+  .bubble-item[data-time="20"] .bubble-content::after {
+    right: 30px !important;
+    left: auto !important;
+    transform: translateX(0) !important;
+  }
+  
+  .bubble-item.active .bubble-content {
+    display: block !important;
+  }
+  
+  .bubble-content::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border: 8px solid transparent !important;
+    border-top-color: rgba(255,255,255,0.95) !important;
+  }
+}
+
 /* Content boxes */
 .bubble-content {
   position: absolute;
@@ -806,14 +912,16 @@ a { color: inherit; text-decoration: none; }
   color: #333;
   padding: 20px 24px;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   min-width: 280px;
   max-width: 320px;
+  text-align: center;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
   z-index: 10;
+  display: none;
 }
 .bubble-content::after {
   content: '';
@@ -829,6 +937,7 @@ a { color: inherit; text-decoration: none; }
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(-8px);
+  display: block;
 }
 .content-title {
   font-family: "GFS Didot", serif;
@@ -844,22 +953,14 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 980px) and (min-width: 769px) {
   .location-hero-content {
     flex-direction: column;
     text-align: center;
     gap: 24px;
   }
   .location-title { font-size: 36px; }
-  .bubbles-container {
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .bubble-item {
-    flex: 0 0 calc(50% - 10px);
-    margin-bottom: 40px;
-  }
+  
   .bubble-content {
     position: static;
     transform: none;
@@ -880,7 +981,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 720px) {
   .location-title { font-size: 28px; }
   .location-tagline { font-size: 16px; }
-  .bubble-item { flex: 0 0 100%; }
 }
 
 /* Buttons */
