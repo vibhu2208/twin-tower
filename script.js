@@ -46,7 +46,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // Modal: open on "Click to View"
 const modal = document.getElementById('enquiry-modal');
-const enquiryForm = document.getElementById('enquiry-form');
 
 function openModal() {
   if (!modal) return;
@@ -83,27 +82,124 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
 
-// Simple submit (prevent default for now)
-enquiryForm?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const data = new FormData(enquiryForm);
-  const name = (data.get('name') || '').toString().trim();
-  const phone = (data.get('phone') || '').toString().trim();
-
-  if (!name || !phone) return; // basic guard
-
-  // TODO: integrate backend or WhatsApp/SMS/email as needed
-  console.log('Enquiry submitted:', { name, phone });
-
-  // Unlock all floor plans and site plans after successful submission
-  document.querySelectorAll('.floor-plan-card, .site-plan-card').forEach(card => {
-    card.classList.add('unlocked');
+// Handle both popup and footer forms
+function handleFormSubmission(form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    
+    try {
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      
+      const formData = new FormData(form);
+      const userName = formData.get('name')?.trim();
+      const userMobile = formData.get('mobile')?.trim();
+      
+      if (!userName || !userMobile) {
+        alert('Please fill in all required fields');
+        return;
+      }
+      
+      // For demo purposes - simulate successful submission
+      // Replace this with actual backend integration when ready
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+      
+      // Create email mailto link as fallback
+      const userEmail = formData.get('email') || '';
+      const subject = 'Twin Tower - New Enquiry';
+      const body = `Name: ${userName}\nEmail: ${userEmail}\nMobile: ${userMobile}\nProject: Twin Tower`;
+      
+      // Open email client
+      window.open(`mailto:vabhavsingh5373@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+      
+      // Always show success for demo
+      if (true) {
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'form-success';
+        successMessage.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Thank you! We'll contact you shortly.</span>
+        `;
+        
+        form.innerHTML = '';
+        form.appendChild(successMessage);
+        
+        // Unlock all floor plans and site plans (for popup form)
+        if (form.id === 'enquiry-form') {
+          document.querySelectorAll('.floor-plan-card, .site-plan-card').forEach(card => {
+            card.classList.add('unlocked');
+          });
+          
+          // Store unlock state in localStorage
+          localStorage.setItem('twintower_unlocked', 'true');
+          
+          // Close modal after 3 seconds without reloading
+          setTimeout(() => {
+            closeModal();
+            // Reset form without reloading page
+            form.innerHTML = `
+              <input type="hidden" name="project" value="Twin Tower">
+              <div class="form-row">
+                <input type="text" name="name" placeholder="Full Name" required />
+              </div>
+              <div class="form-row">
+                <input type="email" name="email" placeholder="Email Address (Optional)" />
+              </div>
+              <div class="form-row">
+                <input type="tel" name="mobile" placeholder="Mobile Number" required />
+              </div>
+              <button class="btn" type="submit">Get Details Now</button>
+              <noscript>
+                <p class="no-js-notice">Note: JavaScript is disabled. The form will submit directly to our server.</p>
+              </noscript>
+            `;
+            // Re-attach event listener to the new form
+            handleFormSubmission(form);
+          }, 3000);
+        } else {
+          // For footer form, store unlock state and reload
+          localStorage.setItem('twintower_unlocked', 'true');
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        }
+      } else {
+        throw new Error(result || 'Failed to send message');
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error sending your message. Please try again or contact us directly.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
   });
+}
 
-  // Reset and close
-  enquiryForm.reset();
-  closeModal();
+// Check if photos should be unlocked on page load
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('twintower_unlocked') === 'true') {
+    document.querySelectorAll('.floor-plan-card, .site-plan-card').forEach(card => {
+      card.classList.add('unlocked');
+    });
+  }
 });
+
+// Initialize both forms
+const enquiryForm = document.getElementById('enquiry-form');
+const footerForm = document.getElementById('footer-form');
+
+if (enquiryForm) handleFormSubmission(enquiryForm);
+if (footerForm) handleFormSubmission(footerForm);
 
 // Footer year
 const y = document.getElementById('year');

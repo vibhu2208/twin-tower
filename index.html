@@ -360,27 +360,61 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>Call us: <a href="tel:+918527134491">+91 85271 34491</a></p>
-      <p>© <span id="year"></span> Twin Tower. All rights reserved.</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3>Get in Touch</h3>
+          <p>Interested in Twin Tower? Fill out the form and we'll contact you shortly.</p>
+        </div>
+        <div class="footer-form">
+          <form id="footer-form" action="form.php" method="post" class="contact-form">
+            <input type="hidden" name="project" value="Twin Tower">
+            <div class="form-grid">
+              <input type="text" name="name" placeholder="Full Name" required />
+              <input type="email" name="email" placeholder="Email (Optional)" />
+              <input type="tel" name="mobile" placeholder="Mobile Number" required />
+              <button class="btn" type="submit">Get Details</button>
+            </div>
+            <noscript>
+              <p class="no-js-notice">Note: JavaScript is disabled. The form will submit directly to our server.</p>
+            </noscript>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Call us: <a href="tel:+918527134491">+91 85271 34491</a></p>
+        <p>  Twin Tower. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Popup Modal: Name + Phone only -->
+  <!-- Popup Modal: Enhanced Design -->
   <div class="modal" id="enquiry-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="enq-title">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-dialog">
       <button class="modal-close" aria-label="Close" data-close>&times;</button>
-      <h3 id="enq-title" class="modal-title">Enquiry</h3>
-      <form id="enquiry-form">
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Full Name" required />
-        </div>
-        <div class="form-row">
-          <input type="tel" name="phone" placeholder="Phone" required />
-        </div>
-        <button class="btn" type="submit">Submit</button>
-      </form>
+      <div class="modal-header">
+        <h3 id="enq-title" class="modal-title">Get Exclusive Details</h3>
+        <p class="modal-subtitle">Fill the form below and unlock premium floor plans</p>
+      </div>
+      <div class="modal-body">
+        <form id="enquiry-form" action="form.php" method="post" class="contact-form">
+          <input type="hidden" name="project" value="Twin Tower">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Full Name" required />
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Email Address (Optional)" />
+          </div>
+          <div class="form-row">
+            <input type="tel" name="mobile" placeholder="Mobile Number" required />
+          </div>
+          <button class="btn" type="submit">Get Details Now</button>
+          <noscript>
+            <p class="no-js-notice">Note: JavaScript is disabled. The form will submit directly to our server.</p>
+          </noscript>
+        </form>
+      </div>
     </div>
   </div>
 
